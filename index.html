@@ -168,10 +168,16 @@ footer{text-align:center;color:var(--choco2);font-size:12px;margin-top:26px;line
 (()=>{
 const $=s=>document.querySelector(s), A=$('#audio');
 const P='M8 5v14l11-7z', Q='M6 5h4v14H6zm8 0h4v14h-4z';
-let fakeT=null,D=null, idx=-1, lines=[], cur=-1, shuffle=false, repeat=0, userScroll=0;
+let fakeT=null,D=null, idx=-1, lines=[], cur=-1, shuffle=false, repeat=1, userScroll=0;
 const fmt=t=>{t=Math.max(0,t|0);return (t/60|0)+':'+String(t%60).padStart(2,'0')};
 const dlIcon='<svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5zm7-3 6-6h-4V3h-4v8H6z"/></svg>';
-fetch('assets/lyrics.json').then(r=>r.json()).then(d=>{D=d;window.__ALBUM=d;build();const m=location.hash.match(/demo=(\d+),(\d+)/);if(m){load(+m[1]-1,false);A.addEventListener('loadedmetadata',()=>{A.currentTime=+m[2];A.play().catch(()=>{});},{once:true});if(/still/.test(location.hash)){setPlaying(true);fakeT=+m[2];sync();$('#mini').classList.add('show')}}else load(0,false);}).catch(e=>{$('#lyrics').innerHTML='<div class="note">가사 정보를 불러오지 못했습니다.</div>';console.error(e)});
+fetch('assets/lyrics.json').then(r=>r.json()).then(d=>{D=d;window.__ALBUM=d;build();const m=location.hash.match(/demo=(\d+),(\d+)/);if(m){load(+m[1]-1,false);A.addEventListener('loadedmetadata',()=>{A.currentTime=+m[2];A.play().catch(()=>{});},{once:true});if(/still/.test(location.hash)){setPlaying(true);fakeT=+m[2];sync();$('#mini').classList.add('show')}}else autoStart();}).catch(e=>{$('#lyrics').innerHTML='<div class="note">가사 정보를 불러오지 못했습니다.</div>';console.error(e)});
+function autoStart(){
+  load(0,true);
+  const kick=()=>{setTimeout(()=>{if(A.paused&&!document.body.dataset.started)A.play().catch(()=>{});},0);['pointerup','keydown','touchend'].forEach(ev=>document.removeEventListener(ev,kick))};
+  A.play().then(()=>{}).catch(()=>{['pointerup','keydown','touchend'].forEach(ev=>document.addEventListener(ev,kick))});
+}
+(()=>{const b=document.getElementById('repeat');if(b){b.classList.add('on');b.title='전체 반복'}})();
 function build(){
   const ol=$('#list'); let tot=0;
   D.tracks.forEach((t,i)=>{tot+=t.duration;
