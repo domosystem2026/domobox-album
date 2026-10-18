@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>도 아니면 모 · DOMOBOX 미니앨범</title>
+<meta name="description" content="DOMOBOX 첫 미니앨범 「도 아니면 모」 — 7곡을 가사와 함께 감상하고 내려받으세요.">
+<meta name="theme-color" content="#F5E3D0">
+<meta property="og:type" content="music.album">
+<meta property="og:title" content="도 아니면 모 · DOMOBOX 미니앨범">
+<meta property="og:description" content="도모들과 함께하는 7곡. 가사 보며 듣고, 무료로 내려받으세요.">
+<meta property="og:image" content="https://domosystem2026.github.io/domobox-album/assets/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://domosystem2026.github.io/domobox-album/">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="도 아니면 모 · DOMOBOX 미니앨범">
+<meta name="twitter:image" content="https://domosystem2026.github.io/domobox-album/assets/img/og.jpg">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" href="assets/lyrics.json" as="fetch" crossorigin>
+<style>
+:root{--cream:#F5E3D0;--cream2:#FBF3EA;--choco:#4A2C1D;--choco2:#7A5340;--accent:#C98B5E;--pink:#F2B8B5;--card:rgba(255,250,244,.72)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--cream);color:var(--choco);font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif}
+body{min-height:100vh;overflow-x:hidden}
+.bg{position:fixed;inset:-12%;z-index:-2;background:url(assets/img/cover-600.webp) center/cover;filter:blur(48px) saturate(1.15);opacity:.55;animation:kb 38s ease-in-out infinite alternate}
+.bg2{position:fixed;inset:0;z-index:-1;background:radial-gradient(120% 80% at 50% 0%,rgba(251,243,234,.35),rgba(245,227,208,.92) 70%)}
+@keyframes kb{0%{transform:scale(1.05) translate(0,0) rotate(0)}50%{transform:scale(1.18) translate(-3%,2%) rotate(3deg)}100%{transform:scale(1.1) translate(3%,-2%) rotate(-2deg)}}
+.wrap{max-width:1080px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 18px 140px}
+header{display:flex;justify-content:center;padding:6px 0 14px}
+header img{height:30px;width:auto}
+.grid{display:grid;gap:22px}
+@media(min-width:900px){.grid{grid-template-columns:420px 1fr;align-items:start}.left{position:sticky;top:18px}}
+.stage{position:relative;width:min(84vw,400px);aspect-ratio:1;margin:8px auto 0}
+.disc{position:absolute;top:4%;left:4%;width:92%;height:92%;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#2b1a12 0 2px,#3a251a 2px 4px);box-shadow:0 10px 30px rgba(74,44,29,.35);transition:transform .9s cubic-bezier(.2,.8,.2,1);animation:spin 9s linear infinite;animation-play-state:paused}
+.disc::after{content:"";position:absolute;inset:34%;border-radius:50%;background:url(assets/img/cover-600.webp) center/cover;box-shadow:0 0 0 6px #F5E3D0 inset}
+.playing .disc{transform:translateX(18%);animation-play-state:running}
+@keyframes spin{to{rotate:360deg}}
+.cover{position:absolute;inset:0;border-radius:22px;overflow:hidden;box-shadow:0 24px 60px rgba(74,44,29,.28),0 2px 0 rgba(255,255,255,.6) inset;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.cover img{width:100%;height:100%;object-fit:cover;display:block;animation:breathe 14s ease-in-out infinite alternate}
+.playing .cover{transform:translateX(-6%)}
+@keyframes breathe{from{transform:scale(1)}to{transform:scale(1.045)}}
+.meta{text-align:center;margin:20px 0 6px}
+.meta .album{font-size:28px;font-weight:800;letter-spacing:-.02em;margin:0}
+.meta .sub{margin:6px 0 0;color:var(--choco2);font-size:14px}
+.now{text-align:center;margin:14px 0 4px;font-weight:700;font-size:18px;min-height:24px}
+.card{background:var(--card);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:22px;box-shadow:0 8px 30px rgba(74,44,29,.10);border:1px solid rgba(255,255,255,.6)}
+.controls{padding:16px 18px 18px;margin-top:10px}
+.bar{position:relative;height:22px;display:flex;align-items:center;cursor:pointer;touch-action:none}
+.bar .rail{width:100%;height:6px;border-radius:6px;background:rgba(74,44,29,.14);overflow:hidden}
+.bar .fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--choco))}
+.bar .knob{position:absolute;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--choco);box-shadow:0 2px 6px rgba(0,0,0,.25);left:0}
+.times{display:flex;justify-content:space-between;font-size:12px;color:var(--choco2);font-variant-numeric:tabular-nums}
+.btns{display:flex;justify-content:center;align-items:center;gap:22px;margin-top:6px}
+.btns button{border:0;background:none;color:var(--choco);cursor:pointer;padding:8px;border-radius:50%;display:grid;place-items:center}
+.btns button:active{transform:scale(.92)}
+.btns .play{width:66px;height:66px;background:var(--choco);color:var(--cream2);box-shadow:0 10px 22px rgba(74,44,29,.35)}
+.btns svg{width:28px;height:28px;fill:currentColor}
+.btns .play svg{width:30px;height:30px}
+.btns .small svg{width:22px;height:22px;opacity:.75}
+.btns .on{color:var(--accent)} .btns .on svg{opacity:1}
+.dlall{display:flex;gap:10px;margin-top:14px}
+.btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-weight:700;font-size:14px;padding:13px 14px;border-radius:14px;background:var(--choco);color:var(--cream2);border:0;cursor:pointer}
+.btn.ghost{background:rgba(74,44,29,.08);color:var(--choco)}
+.btn svg{width:18px;height:18px;fill:currentColor}
+.tabs{display:flex;gap:6px;padding:6px;margin-bottom:12px;position:sticky;top:8px;z-index:3}
+.tabs button{flex:1;border:0;background:none;padding:11px;border-radius:14px;font-weight:700;color:var(--choco2);font-size:15px;cursor:pointer;font-family:inherit}
+.tabs button.act{background:var(--choco);color:var(--cream2)}
+@media(min-width:900px){.tabs{display:none}.panel{display:block!important}}
+.panel h3{margin:0;padding:18px 20px 8px;font-size:15px;color:var(--choco2);font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.panel h3 small{font-weight:500;font-size:12px;opacity:.8}
+.list{list-style:none;margin:0;padding:4px 8px 10px}
+.list li{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:14px;cursor:pointer}
+.list li:hover{background:rgba(74,44,29,.05)}
+.list li.cur{background:rgba(201,139,94,.18)}
+.list .no{width:22px;text-align:center;font-weight:700;color:var(--choco2);font-variant-numeric:tabular-nums}
+.list li.cur .no{color:transparent;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234A2C1D' d='M4 10h3v10H4zm6.5-6h3v16h-3zM17 13h3v7h-3z'/%3E%3C/svg%3E") center/16px no-repeat}
+.list .t{flex:1;min-width:0}
+.list .t b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list .t span{font-size:12px;color:var(--choco2)}
+.list .d{font-size:12px;color:var(--choco2);font-variant-numeric:tabular-nums}
+.list a.dl{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;color:var(--choco)}
+.list a.dl:hover{background:rgba(74,44,29,.08)}
+.list a.dl svg{width:18px;height:18px;fill:currentColor}
+.lyrics{position:relative;height:min(62vh,560px);overflow-y:auto;padding:30% 22px 50%;scroll-behavior:smooth;mask-image:linear-gradient(transparent,#000 14%,#000 80%,transparent);-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 80%,transparent);scrollbar-width:none}
+.lyrics::-webkit-scrollbar{display:none}
+.lyrics p{margin:0;padding:7px 0;font-size:21px;line-height:1.45;font-weight:700;color:rgba(74,44,29,.34);transition:color .35s,transform .35s;transform-origin:left center;cursor:pointer;word-break:keep-all}
+.lyrics p.bk{font-size:17px;font-style:italic}
+.lyrics p.on{color:var(--choco);transform:scale(1.04)}
+.lyrics p.past{color:rgba(74,44,29,.55)}
+.lyrics p.unsung{cursor:default;color:rgba(74,44,29,.22);font-size:17px}
+.lyrics .gap{height:18px}
+.lyrics .note{font-size:13px;color:var(--choco2);background:rgba(74,44,29,.06);padding:10px 12px;border-radius:12px;margin:14px 0}
+.lyrics.static p{color:var(--choco)}
+.inst{display:grid;place-items:center;height:100%;text-align:center;color:var(--choco2);font-size:18px;font-weight:700;gap:10px}
+.inst .eq{display:flex;gap:5px;height:40px;align-items:flex-end;justify-content:center}
+.inst .eq i{width:6px;background:var(--accent);border-radius:3px;animation:eq 1s ease-in-out infinite}
+.inst .eq i:nth-child(2){animation-delay:.2s}.inst .eq i:nth-child(3){animation-delay:.4s}.inst .eq i:nth-child(4){animation-delay:.1s}.inst .eq i:nth-child(5){animation-delay:.3s}
+@keyframes eq{0%,100%{height:8px}50%{height:38px}}
+.syncinfo{font-size:11px;font-weight:500;color:var(--choco2)}
+footer{text-align:center;color:var(--choco2);font-size:12px;margin-top:26px;line-height:1.7}
+.mini{position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));display:flex;align-items:center;gap:12px;padding:10px 12px;z-index:5;transform:translateY(140%);transition:transform .4s}
+.mini.show{transform:none}
+.mini img{width:44px;height:44px;border-radius:10px}
+.mini .mt{flex:1;min-width:0}
+.mini .mt b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini .mt span{font-size:12px;color:var(--choco2)}
+.mini .mline{font-size:12px;color:var(--choco);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.mini button{border:0;width:44px;height:44px;border-radius:50%;background:var(--choco);color:var(--cream2);display:grid;place-items:center;cursor:pointer}
+.mini button svg{width:20px;height:20px;fill:currentColor}
+@media(min-width:900px){.mini{display:none}}
+@media(prefers-reduced-motion:reduce){.bg,.cover img,.disc{animation:none}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"></div><div class="bg2" aria-hidden="true"></div>
+<div class="wrap" id="app">
+  <header><img src="assets/img/logo.webp" alt="DOMOBOX"></header>
+  <div class="grid">
+    <section class="left">
+      <div class="stage" id="stage">
+        <div class="disc" aria-hidden="true"></div>
+        <div class="cover"><img src="assets/img/cover.webp" alt="도 아니면 모 앨범 커버" onerror="this.src='assets/img/cover.jpg'"></div>
+      </div>
+      <div class="meta">
+        <h1 class="album">도 아니면 모</h1>
+        <p class="sub">DOMOBOX · 미니앨범 · 2026 · 7곡</p>
+      </div>
+      <div class="now" id="nowTitle">재생할 곡을 골라 주세요</div>
+      <div class="card controls">
+        <div class="bar" id="bar" role="slider" aria-label="재생 위치" tabindex="0"><div class="rail"><div class="fill" id="fill"></div></div><div class="knob" id="knob"></div></div>
+        <div class="times"><span id="cur">0:00</span><span id="dur">0:00</span></div>
+        <div class="btns">
+          <button class="small" id="shuffle" aria-label="랜덤 재생"><svg viewBox="0 0 24 24"><path d="M10.6 9.2 5.4 4 4 5.4l5.2 5.2zM14.5 4l2 2L4 18.6 5.4 20 18 7.5l2 2V4zm.3 9.4-1.4 1.4 3.1 3.2-2 2H20v-5.5l-2 2z"/></svg></button>
+          <button id="prev" aria-label="이전 곡"><svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg></button>
+          <button class="play" id="play" aria-label="재생"><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg></button>
+          <button id="next" aria-label="다음 곡"><svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6zm10-12h2v12h-2z"/></svg></button>
+          <button class="small" id="repeat" aria-label="반복"><svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2z"/></svg></button>
+        </div>
+        <div class="dlall">
+          <a class="btn" href="assets/DOMOBOX_DoOrMo_Album.zip" download="DOMOBOX_도아니면모_앨범.zip"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5zm7-3 6-6h-4V3h-4v8H6z"/></svg>앨범 전체 받기 (ZIP)</a>
+          <button class="btn ghost" id="share"><svg viewBox="0 0 24 24"><path d="M18 16a3 3 0 0 0-2.4 1.2l-6.7-3.4a3 3 0 0 0 0-1.6l6.7-3.4A3 3 0 1 0 15 7l-6.7 3.4a3 3 0 1 0 0 3.2L15 17a3 3 0 1 0 3-1z"/></svg>공유</button>
+        </div>
+      </div>
+    </section>
+    <section class="right">
+      <div class="tabs card" role="tablist">
+        <button class="act" data-tab="lyr" role="tab">가사</button>
+        <button data-tab="trk" role="tab">수록곡</button>
+      </div>
+      <div class="panel card" id="p-lyr">
+        <h3><span id="lyrTitle">가사</span><small id="syncInfo"></small></h3>
+        <div class="lyrics" id="lyrics"></div>
+      </div>
+      <div class="panel card" id="p-trk" style="display:none;margin-top:18px">
+        <h3><span>수록곡</span><small id="total"></small></h3>
+        <ol class="list" id="list"></ol>
+      </div>
+      <footer>© 2026 DOMOBOX · DRINK &amp; TINY SURPRISE<br>매장에서 만나요, 도모들과 함께!</footer>
+    </section>
+  </div>
+</div>
+<div class="mini card" id="mini"><img src="assets/img/cover-512.jpg" alt=""><div class="mt"><b id="miniT"></b><span class="mline" id="miniL">DOMOBOX</span></div><button id="miniPlay" aria-label="재생/일시정지"><svg viewBox="0 0 24 24" id="miniIcon"><path d="M8 5v14l11-7z"/></svg></button></div>
+<audio id="audio" preload="metadata"></audio>
+<script>
+(()=>{
+const $=s=>document.querySelector(s), A=$('#audio');
+const P='M8 5v14l11-7z', Q='M6 5h4v14H6zm8 0h4v14h-4z';
+let fakeT=null,D=null, idx=-1, lines=[], cur=-1, shuffle=false, repeat=0, userScroll=0;
+const fmt=t=>{t=Math.max(0,t|0);return (t/60|0)+':'+String(t%60).padStart(2,'0')};
+const dlIcon='<svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5zm7-3 6-6h-4V3h-4v8H6z"/></svg>';
+fetch('assets/lyrics.json').then(r=>r.json()).then(d=>{D=d;window.__ALBUM=d;build();const m=location.hash.match(/demo=(\d+),(\d+)/);if(m){load(+m[1]-1,false);A.addEventListener('loadedmetadata',()=>{A.currentTime=+m[2];A.play().catch(()=>{});},{once:true});if(/still/.test(location.hash)){setPlaying(true);fakeT=+m[2];sync();$('#mini').classList.add('show')}}else load(0,false);}).catch(e=>{$('#lyrics').innerHTML='<div class="note">가사 정보를 불러오지 못했습니다.</div>';console.error(e)});
+function build(){
+  const ol=$('#list'); let tot=0;
+  D.tracks.forEach((t,i)=>{tot+=t.duration;
+    const li=document.createElement('li');
+    li.innerHTML=`<span class="no">${t.no}</span><span class="t"><b>${t.title}</b><span>${t.instrumental?'연주곡':'DOMOBOX'}</span></span><span class="d">${fmt(t.duration)}</span><a class="dl" href="${t.src}" download="${t.download}" aria-label="${t.title} 내려받기" title="내려받기">${dlIcon}</a>`;
+    li.onclick=e=>{if(e.target.closest('a'))return;load(i,true)};
+    ol.appendChild(li)});
+  $('#total').textContent=`7곡 · ${Math.round(tot/60)}분`;
+}
+function load(i,play){
+  idx=(i+D.tracks.length)%D.tracks.length; const t=D.tracks[idx];
+  A.src=t.src; $('#nowTitle').textContent=`${t.no}. ${t.title}`; $('#miniT').textContent=t.title; $('#lyrTitle').textContent=t.title;
+  $('#dur').textContent=fmt(t.duration);
+  document.querySelectorAll('#list li').forEach((li,j)=>li.classList.toggle('cur',j===idx));
+  renderLyrics(t);
+  if('mediaSession' in navigator){navigator.mediaSession.metadata=new MediaMetadata({title:t.title,artist:'DOMOBOX',album:'도 아니면 모',artwork:[{src:'assets/img/cover-512.jpg',sizes:'512x512',type:'image/jpeg'}]})}
+  if(play){A.play().catch(()=>{}); $('#mini').classList.add('show')}
+}
+function renderLyrics(t){
+  const box=$('#lyrics'); box.innerHTML=''; lines=[]; cur=-1; box.classList.remove('static'); box.scrollTop=0;
+  if(t.instrumental){box.innerHTML='<div class="inst"><div class="eq"><i></i><i></i><i></i><i></i><i></i></div>연주곡입니다<br><span style="font-weight:500;font-size:14px">편안하게 감상해 주세요</span></div>';$('#syncInfo').textContent='';return}
+  const synced=t.lines.some(l=>typeof l.t==='number');
+  $('#syncInfo').textContent=synced?'가사 싱크':'';
+  if(!synced) box.classList.add('static');
+  let noted=false;
+  t.lines.forEach(l=>{
+    if(l.break||l.section!==undefined&&l.text===undefined){if(box.lastChild&&!box.lastChild.classList.contains('gap')){const g=document.createElement('div');g.className='gap';box.appendChild(g)}return}
+    if(l.unsung&&!noted){noted=true;const n=document.createElement('div');n.className='note';n.textContent='아래 가사는 현재 음원에는 들어 있지 않은 부분입니다.';box.appendChild(n)}
+    const p=document.createElement('p'); p.textContent=l.text; if(l.backing)p.classList.add('bk');
+    if(l.unsung)p.classList.add('unsung');
+    else if(typeof l.t==='number'){p.dataset.t=l.t; p.onclick=()=>{A.currentTime=l.t+0.01; if(A.paused)A.play()}; lines.push({t:l.t,el:p})}
+    box.appendChild(p)});
+}
+function sync(){
+  const t=fakeT??A.currentTime, d=A.duration||D.tracks[idx].duration;
+  const pc=d?t/d*100:0; $('#fill').style.width=pc+'%'; $('#knob').style.left=pc+'%'; $('#cur').textContent=fmt(t);
+  if(!lines.length)return;
+  let k=-1; for(let i=0;i<lines.length;i++){if(lines[i].t<=t+0.25)k=i;else break}
+  if(k!==cur){
+    lines.forEach((l,i)=>{l.el.classList.toggle('on',i===k);l.el.classList.toggle('past',i<k)}); cur=k;
+    $('#miniL').textContent=k>=0?lines[k].el.textContent:'DOMOBOX';
+    if(k>=0&&Date.now()-userScroll>3500){const box=$('#lyrics'),el=lines[k].el;box.scrollTo({top:el.offsetTop-box.clientHeight*0.38,behavior:fakeT!=null?'instant':'smooth'})}
+  }
+}
+A.addEventListener('timeupdate',sync);
+A.addEventListener('loadedmetadata',()=>{$('#dur').textContent=fmt(A.duration)});
+const setPlaying=on=>{$('#app').classList.toggle('playing',on);$('#stage').classList.toggle('playing',on);$('#playIcon').innerHTML=`<path d="${on?Q:P}"/>`;$('#miniIcon').innerHTML=`<path d="${on?Q:P}"/>`;$('#play').setAttribute('aria-label',on?'일시정지':'재생')};
+A.addEventListener('play',()=>{setPlaying(true);$('#mini').classList.add('show');(function raf(){if(!A.paused){sync();requestAnimationFrame(raf)}})()});
+A.addEventListener('pause',()=>setPlaying(false));
+A.addEventListener('ended',()=>{if(repeat===2){A.currentTime=0;A.play();return} if(shuffle){let n;do{n=Math.random()*7|0}while(n===idx);load(n,true);return} if(idx<D.tracks.length-1||repeat===1)load(idx+1,true);else{setPlaying(false)}});
+const toggle=()=>{if(!D)return; A.paused?A.play():A.pause()};
+$('#play').onclick=toggle; $('#miniPlay').onclick=toggle;
+$('#next').onclick=()=>load(idx+1,true);
+$('#prev').onclick=()=>{if(A.currentTime>3)A.currentTime=0;else load(idx-1,true)};
+$('#shuffle').onclick=e=>{shuffle=!shuffle;e.currentTarget.classList.toggle('on',shuffle)};
+$('#repeat').onclick=e=>{repeat=(repeat+1)%3;const b=e.currentTarget;b.classList.toggle('on',repeat>0);b.title=['반복 끔','전체 반복','한 곡 반복'][repeat];b.style.position='relative';b.dataset.one=repeat===2?'1':'';b.innerHTML=b.innerHTML.replace(/<b.*<\/b>/,'')+(repeat===2?'<b style="position:absolute;font-size:9px;top:6px;right:4px">1</b>':'')};
+const bar=$('#bar'); const seek=e=>{const r=bar.getBoundingClientRect();const x=((e.touches?e.touches[0].clientX:e.clientX)-r.left)/r.width;const d=A.duration||D.tracks[idx].duration;A.currentTime=Math.min(Math.max(x,0),1)*d;sync()};
+let drag=false; bar.addEventListener('pointerdown',e=>{drag=true;bar.setPointerCapture(e.pointerId);seek(e)}); bar.addEventListener('pointermove',e=>{if(drag)seek(e)}); bar.addEventListener('pointerup',()=>drag=false);
+bar.addEventListener('keydown',e=>{if(e.key==='ArrowRight')A.currentTime+=5;if(e.key==='ArrowLeft')A.currentTime-=5});
+['wheel','touchmove'].forEach(ev=>$('#lyrics').addEventListener(ev,()=>userScroll=Date.now(),{passive:true}));
+document.addEventListener('keydown',e=>{if(e.code==='Space'&&!/INPUT|TEXTAREA|BUTTON/.test(e.target.tagName)){e.preventDefault();toggle()}});
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('act',x===b));$('#p-lyr').style.display=b.dataset.tab==='lyr'?'block':'none';$('#p-trk').style.display=b.dataset.tab==='trk'?'block':'none'});
+$('#share').onclick=async()=>{const data={title:'도 아니면 모 · DOMOBOX',text:'DOMOBOX 미니앨범 「도 아니면 모」',url:location.href};try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(location.href);$('#share').lastChild.textContent='링크 복사됨'}}catch(e){}};
+if('mediaSession' in navigator){const m=navigator.mediaSession;m.setActionHandler('play',()=>A.play());m.setActionHandler('pause',()=>A.pause());m.setActionHandler('previoustrack',()=>$('#prev').click());m.setActionHandler('nexttrack',()=>$('#next').click());try{m.setActionHandler('seekto',e=>A.currentTime=e.seekTime)}catch(e){}}
+})();
+</script>
+</body>
+</html>
