@@ -25,7 +25,7 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--cream);color:var(--choco);font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif}
 body{min-height:100vh;overflow-x:hidden}
-.bg{position:fixed;inset:-12%;z-index:-2;background:url(assets/img/cover-600.webp) center/cover;filter:blur(48px) saturate(1.15);opacity:.55;animation:kb 38s ease-in-out infinite alternate}
+.bg{position:fixed;inset:-12%;z-index:-2;background:var(--art,url(assets/img/cover-600.webp)) center/cover;filter:blur(48px) saturate(1.15);opacity:.55;animation:kb 38s ease-in-out infinite alternate}
 .bg2{position:fixed;inset:0;z-index:-1;background:radial-gradient(120% 80% at 50% 0%,rgba(251,243,234,.35),rgba(245,227,208,.92) 70%)}
 @keyframes kb{0%{transform:scale(1.05) translate(0,0) rotate(0)}50%{transform:scale(1.18) translate(-3%,2%) rotate(3deg)}100%{transform:scale(1.1) translate(3%,-2%) rotate(-2deg)}}
 .wrap{max-width:1080px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 18px 140px}
@@ -35,11 +35,11 @@ header img{height:30px;width:auto}
 @media(min-width:900px){.grid{grid-template-columns:420px 1fr;align-items:start}.left{position:sticky;top:18px}}
 .stage{position:relative;width:min(84vw,400px);aspect-ratio:1;margin:8px auto 0}
 .disc{position:absolute;top:4%;left:4%;width:92%;height:92%;border-radius:50%;background:repeating-radial-gradient(circle at 50% 50%,#2b1a12 0 2px,#3a251a 2px 4px);box-shadow:0 10px 30px rgba(74,44,29,.35);transition:transform .9s cubic-bezier(.2,.8,.2,1);animation:spin 9s linear infinite;animation-play-state:paused}
-.disc::after{content:"";position:absolute;inset:34%;border-radius:50%;background:url(assets/img/cover-600.webp) center/cover;box-shadow:0 0 0 6px #F5E3D0 inset}
+.disc::after{content:"";position:absolute;inset:34%;border-radius:50%;background:var(--art,url(assets/img/cover-600.webp)) center/cover;box-shadow:0 0 0 6px #F5E3D0 inset}
 .playing .disc{transform:translateX(18%);animation-play-state:running}
 @keyframes spin{to{rotate:360deg}}
 .cover{position:absolute;inset:0;border-radius:22px;overflow:hidden;box-shadow:0 24px 60px rgba(74,44,29,.28),0 2px 0 rgba(255,255,255,.6) inset;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
-.cover img{width:100%;height:100%;object-fit:cover;display:block;animation:breathe 14s ease-in-out infinite alternate}
+.cover img{transition:opacity .35s;width:100%;height:100%;object-fit:cover;display:block;animation:breathe 14s ease-in-out infinite alternate}
 .playing .cover{transform:translateX(-6%)}
 @keyframes breathe{from{transform:scale(1)}to{transform:scale(1.045)}}
 .meta{text-align:center;margin:20px 0 6px}
@@ -122,7 +122,7 @@ footer{text-align:center;color:var(--choco2);font-size:12px;margin-top:26px;line
     <section class="left">
       <div class="stage" id="stage">
         <div class="disc" aria-hidden="true"></div>
-        <div class="cover"><img src="assets/img/cover.webp" alt="도 아니면 모 앨범 커버" onerror="this.src='assets/img/cover.jpg'"></div>
+        <div class="cover"><img id="coverImg" src="assets/img/cover.webp" alt="도 아니면 모 앨범 커버" onerror="this.onerror=null;this.src=this.src.replace('.webp','.jpg')"></div>
       </div>
       <div class="meta">
         <h1 class="album" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">도 아니면 모</h1>
@@ -162,7 +162,7 @@ footer{text-align:center;color:var(--choco2);font-size:12px;margin-top:26px;line
     </section>
   </div>
 </div>
-<div class="mini card" id="mini"><img src="assets/img/cover-512.jpg" alt=""><div class="mt"><b id="miniT"></b><span class="mline" id="miniL">DOMOBOX</span></div><button id="miniPlay" aria-label="재생/일시정지"><svg viewBox="0 0 24 24" id="miniIcon"><path d="M8 5v14l11-7z"/></svg></button></div>
+<div class="mini card" id="mini"><img id="miniImg" src="assets/img/cover-512.jpg" alt=""><div class="mt"><b id="miniT"></b><span class="mline" id="miniL">DOMOBOX</span></div><button id="miniPlay" aria-label="재생/일시정지"><svg viewBox="0 0 24 24" id="miniIcon"><path d="M8 5v14l11-7z"/></svg></button></div>
 <audio id="audio" preload="metadata"></audio>
 <script>
 (()=>{
@@ -181,15 +181,17 @@ function build(){
     ol.appendChild(li)});
   $('#total').textContent=`7곡 · ${Math.round(tot/60)}분`;
 }
+function setArt(i){const n=String(i+1).padStart(2,'0'),b='assets/img/tracks/'+n;const ci=document.getElementById('coverImg');if(ci&&!ci.src.endsWith(b+'.webp')){ci.style.opacity=0;const im=new Image();im.onload=im.onerror=()=>{ci.src=b+'.webp';ci.alt=(D&&D.tracks[i]?D.tracks[i].title:'')+' 커버';ci.style.opacity=1};im.src=b+'.webp'}const mi=document.getElementById('miniImg');if(mi)mi.src=b+'-512.jpg';document.documentElement.style.setProperty('--art','url('+b+'-600.webp)');return b}
 function load(i,play){
   idx=(i+D.tracks.length)%D.tracks.length; const t=D.tracks[idx];
   A.src=t.src; $('#nowTitle').textContent=`${t.no}. ${t.title}`; $('#miniT').textContent=t.title; $('#lyrTitle').textContent=t.title;
   $('#dur').textContent=fmt(t.duration);
   document.querySelectorAll('#list li').forEach((li,j)=>li.classList.toggle('cur',j===idx));
   renderLyrics(t);
-  if('mediaSession' in navigator){navigator.mediaSession.metadata=new MediaMetadata({title:t.title,artist:'DOMOBOX',album:'도 아니면 모',artwork:[{src:'assets/img/cover-512.jpg',sizes:'512x512',type:'image/jpeg'}]})}
-  if(play){A.play().catch(()=>{}); $('#mini').classList.add('show')}
+  if('mediaSession' in navigator){navigator.mediaSession.metadata=new MediaMetadata({title:t.title,artist:'DOMOBOX',album:'도 아니면 모',artwork:[{src:'assets/img/tracks/'+String(idx+1).padStart(2,'0')+'-512.jpg',sizes:'512x512',type:'image/jpeg'}]})}
+  if(play){setArt(idx);A.play().catch(()=>{}); $('#mini').classList.add('show')}else if(!A.paused||document.body.dataset.started)setArt(idx);
 }
+A.addEventListener('play',()=>{document.body.dataset.started=1;setArt(idx)});
 function renderLyrics(t){
   const box=$('#lyrics'); box.innerHTML=''; lines=[]; cur=-1; box.classList.remove('static'); box.scrollTop=0;
   if(t.instrumental){box.innerHTML='<div class="inst"><div class="eq"><i></i><i></i><i></i><i></i><i></i></div>연주곡입니다<br><span style="font-weight:500;font-size:14px">편안하게 감상해 주세요</span></div>';$('#syncInfo').textContent='';return}
