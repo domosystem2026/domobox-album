@@ -37,6 +37,19 @@ body{min-height:100vh;overflow-x:hidden}
 .wrap{max-width:1080px;margin:0 auto;padding:max(18px,env(safe-area-inset-top)) 18px 140px}
 header{display:flex;justify-content:center;padding:6px 0 14px}
 header img{height:30px;width:auto}
+header{position:relative}
+.lang-switch{position:absolute;right:0;top:50%;transform:translateY(-50%);z-index:20}
+.lang-switch-btn{min-width:2.2rem;min-height:2.75rem;color:var(--choco2);cursor:pointer;background:none;border:0;display:inline-flex;align-items:center;justify-content:center;gap:.3rem;padding:.2rem .15rem;font-family:inherit}
+.lang-switch-btn:hover,.lang-switch-btn:focus-visible{color:var(--choco)}
+.lang-flag{display:block;flex-shrink:0;width:1.28rem;height:.85rem;border-radius:1.5px;overflow:hidden;box-shadow:0 0 0 1px rgba(74,44,29,.22)}
+.lang-caret{width:0;height:0;border-top:.24rem solid;border-left:.2rem solid transparent;border-right:.2rem solid transparent;transform-origin:50% 40%;transition:transform .16s}
+.lang-switch.is-open .lang-caret{transform:rotate(180deg)}
+.lang-menu{position:absolute;right:0;top:calc(100% - .1rem);margin:0;padding:.45rem .42rem;list-style:none;display:grid;gap:.4rem;background:var(--cream2);border-radius:6px;box-shadow:0 1px 2px rgba(74,44,29,.08),0 10px 28px rgba(74,44,29,.18)}
+.lang-menu[hidden]{display:none}
+.lang-option{cursor:pointer;background:none;border:0;display:flex;align-items:center;justify-content:center;padding:.12rem;min-width:2rem;min-height:1.6rem}
+.lang-option .lang-flag{width:1.35rem;height:.9rem}
+.lang-option:hover .lang-flag,.lang-option:focus-visible .lang-flag{box-shadow:0 0 0 2px var(--accent)}
+@media(prefers-reduced-motion:reduce){.lang-caret{transition:none}}
 .grid{display:grid;gap:22px}
 @media(min-width:900px){.grid{grid-template-columns:420px 1fr;align-items:start}.left{position:sticky;top:18px}}
 .stage{position:relative;width:min(84vw,400px);aspect-ratio:1;margin:8px auto 0}
@@ -123,7 +136,7 @@ footer{text-align:center;color:var(--choco2);font-size:12px;margin-top:26px;line
 <body>
 <div class="bg" aria-hidden="true"></div><div class="bg2" aria-hidden="true"></div>
 <div class="wrap" id="app">
-  <header><img src="assets/img/logo.webp" alt="DOMOBOX"></header>
+  <header><img src="assets/img/logo.webp" alt="DOMOBOX"><div class="lang-switch" id="langSwitch"><button type="button" class="lang-switch-btn" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-controls="langMenu" data-i18n-aria="langTo" aria-label="언어 선택"><span id="langCurFlag"></span><span class="lang-caret" aria-hidden="true"></span></button><ul class="lang-menu" id="langMenu" role="listbox" hidden></ul></div></header>
   <div class="grid">
     <section class="left">
       <div class="stage" id="stage">
@@ -174,10 +187,10 @@ footer{text-align:center;color:var(--choco2);font-size:12px;margin-top:26px;line
 /* DOMOBOX Music — UI language (ko/en/ja/zh). Lyrics, track titles & covers stay Korean. */
 (()=>{
 const S={
-ko:{sub:'DOMOBOX · 미니앨범 · 2026 · 7곡',pick:'재생할 곡을 골라 주세요',seek:'재생 위치',shuffle:'랜덤 재생',prev:'이전 곡',next:'다음 곡',play:'재생',pause:'일시정지',playPause:'재생/일시정지',repeat:'반복',rOff:'반복 끔',rAll:'전체 반복',rOne:'한 곡 반복',zip:'앨범 전체 받기 (ZIP)',share:'공유',copied:'링크 복사됨',lyrics:'가사',tracks:'수록곡',footer:'매장에서 만나요, 도모들과 함께!',inst:'연주곡',dl:'내려받기',dlOf:'{t} 내려받기',total:'{n}곡 · {m}분',coverAlt:'도 아니면 모 앨범 커버',trackCover:'{t} 커버',lyrErr:'가사 정보를 불러오지 못했습니다.',instMsg:'연주곡입니다',instSub:'편안하게 감상해 주세요',synced:'가사 싱크',shareText:'DOMOBOX 미니앨범 「도 아니면 모」',desc:'DOMOBOX 첫 미니앨범 「도 아니면 모」 — 7곡을 가사와 함께 감상하고 내려받으세요.'},
-en:{sub:'DOMOBOX · Mini Album · 2026 · 7 Tracks',pick:'Choose a track to play',seek:'Playback position',shuffle:'Shuffle',prev:'Previous track',next:'Next track',play:'Play',pause:'Pause',playPause:'Play/Pause',repeat:'Repeat',rOff:'Repeat off',rAll:'Repeat all',rOne:'Repeat one',zip:'Download Full Album (ZIP)',share:'Share',copied:'Link copied',lyrics:'Lyrics',tracks:'Tracklist',footer:'Come meet the Domos at our store!',inst:'Instrumental',dl:'Download',dlOf:'Download {t}',total:'{n} tracks · {m} min',coverAlt:'도 아니면 모 album cover',trackCover:'{t} cover art',lyrErr:'Couldn’t load the lyrics.',instMsg:'This is an instrumental track',instSub:'Sit back and enjoy',synced:'Synced lyrics',shareText:'DOMOBOX mini album 「도 아니면 모」',desc:'DOMOBOX’s first mini album 「도 아니면 모」 — listen to all 7 tracks with lyrics and download them for free.'},
-ja:{sub:'DOMOBOX · ミニアルバム · 2026 · 全7曲',pick:'再生する曲を選んでください',seek:'再生位置',shuffle:'シャッフル再生',prev:'前の曲',next:'次の曲',play:'再生',pause:'一時停止',playPause:'再生/一時停止',repeat:'リピート',rOff:'リピートオフ',rAll:'全曲リピート',rOne:'1曲リピート',zip:'アルバムを一括ダウンロード (ZIP)',share:'シェア',copied:'リンクをコピーしました',lyrics:'歌詞',tracks:'収録曲',footer:'ドモたちと一緒に、お店で待ってるね！',inst:'インスト',dl:'ダウンロード',dlOf:'{t}をダウンロード',total:'全{n}曲 · {m}分',coverAlt:'도 아니면 모 アルバムジャケット',trackCover:'{t} ジャケット',lyrErr:'歌詞を読み込めませんでした。',instMsg:'インストゥルメンタル曲です',instSub:'ゆったりとお楽しみください',synced:'歌詞同期',shareText:'DOMOBOX ミニアルバム「도 아니면 모」',desc:'DOMOBOXの1stミニアルバム「도 아니면 모」— 全7曲を歌詞と一緒に聴いて、ダウンロードできます。'},
-zh:{sub:'DOMOBOX · 迷你专辑 · 2026 · 共7首',pick:'请选择要播放的歌曲',seek:'播放进度',shuffle:'随机播放',prev:'上一首',next:'下一首',play:'播放',pause:'暂停',playPause:'播放/暂停',repeat:'循环播放',rOff:'关闭循环',rAll:'全部循环',rOne:'单曲循环',zip:'下载整张专辑 (ZIP)',share:'分享',copied:'链接已复制',lyrics:'歌词',tracks:'曲目',footer:'和DOMO们一起，在店里等你！',inst:'纯音乐',dl:'下载',dlOf:'下载 {t}',total:'共{n}首 · {m}分钟',coverAlt:'도 아니면 모 专辑封面',trackCover:'{t} 封面',lyrErr:'歌词加载失败。',instMsg:'这是一首纯音乐',instSub:'请放松欣赏',synced:'歌词同步',shareText:'DOMOBOX 迷你专辑「도 아니면 모」',desc:'DOMOBOX首张迷你专辑「도 아니면 모」— 边看歌词边听全部7首歌曲，并可免费下载。'}};
+ko:{langTo:'언어 선택',sub:'DOMOBOX · 미니앨범 · 2026 · 7곡',pick:'재생할 곡을 골라 주세요',seek:'재생 위치',shuffle:'랜덤 재생',prev:'이전 곡',next:'다음 곡',play:'재생',pause:'일시정지',playPause:'재생/일시정지',repeat:'반복',rOff:'반복 끔',rAll:'전체 반복',rOne:'한 곡 반복',zip:'앨범 전체 받기 (ZIP)',share:'공유',copied:'링크 복사됨',lyrics:'가사',tracks:'수록곡',footer:'매장에서 만나요, 도모들과 함께!',inst:'연주곡',dl:'내려받기',dlOf:'{t} 내려받기',total:'{n}곡 · {m}분',coverAlt:'도 아니면 모 앨범 커버',trackCover:'{t} 커버',lyrErr:'가사 정보를 불러오지 못했습니다.',instMsg:'연주곡입니다',instSub:'편안하게 감상해 주세요',synced:'가사 싱크',shareText:'DOMOBOX 미니앨범 「도 아니면 모」',desc:'DOMOBOX 첫 미니앨범 「도 아니면 모」 — 7곡을 가사와 함께 감상하고 내려받으세요.'},
+en:{langTo:'Select language',sub:'DOMOBOX · Mini Album · 2026 · 7 Tracks',pick:'Choose a track to play',seek:'Playback position',shuffle:'Shuffle',prev:'Previous track',next:'Next track',play:'Play',pause:'Pause',playPause:'Play/Pause',repeat:'Repeat',rOff:'Repeat off',rAll:'Repeat all',rOne:'Repeat one',zip:'Download Full Album (ZIP)',share:'Share',copied:'Link copied',lyrics:'Lyrics',tracks:'Tracklist',footer:'Come meet the Domos at our store!',inst:'Instrumental',dl:'Download',dlOf:'Download {t}',total:'{n} tracks · {m} min',coverAlt:'도 아니면 모 album cover',trackCover:'{t} cover art',lyrErr:'Couldn’t load the lyrics.',instMsg:'This is an instrumental track',instSub:'Sit back and enjoy',synced:'Synced lyrics',shareText:'DOMOBOX mini album 「도 아니면 모」',desc:'DOMOBOX’s first mini album 「도 아니면 모」 — listen to all 7 tracks with lyrics and download them for free.'},
+ja:{langTo:'言語を選ぶ',sub:'DOMOBOX · ミニアルバム · 2026 · 全7曲',pick:'再生する曲を選んでください',seek:'再生位置',shuffle:'シャッフル再生',prev:'前の曲',next:'次の曲',play:'再生',pause:'一時停止',playPause:'再生/一時停止',repeat:'リピート',rOff:'リピートオフ',rAll:'全曲リピート',rOne:'1曲リピート',zip:'アルバムを一括ダウンロード (ZIP)',share:'シェア',copied:'リンクをコピーしました',lyrics:'歌詞',tracks:'収録曲',footer:'ドモたちと一緒に、お店で待ってるね！',inst:'インスト',dl:'ダウンロード',dlOf:'{t}をダウンロード',total:'全{n}曲 · {m}分',coverAlt:'도 아니면 모 アルバムジャケット',trackCover:'{t} ジャケット',lyrErr:'歌詞を読み込めませんでした。',instMsg:'インストゥルメンタル曲です',instSub:'ゆったりとお楽しみください',synced:'歌詞同期',shareText:'DOMOBOX ミニアルバム「도 아니면 모」',desc:'DOMOBOXの1stミニアルバム「도 아니면 모」— 全7曲を歌詞と一緒に聴いて、ダウンロードできます。'},
+zh:{langTo:'选择语言',sub:'DOMOBOX · 迷你专辑 · 2026 · 共7首',pick:'请选择要播放的歌曲',seek:'播放进度',shuffle:'随机播放',prev:'上一首',next:'下一首',play:'播放',pause:'暂停',playPause:'播放/暂停',repeat:'循环播放',rOff:'关闭循环',rAll:'全部循环',rOne:'单曲循环',zip:'下载整张专辑 (ZIP)',share:'分享',copied:'链接已复制',lyrics:'歌词',tracks:'曲目',footer:'和DOMO们一起，在店里等你！',inst:'纯音乐',dl:'下载',dlOf:'下载 {t}',total:'共{n}首 · {m}分钟',coverAlt:'도 아니면 모 专辑封面',trackCover:'{t} 封面',lyrErr:'歌词加载失败。',instMsg:'这是一首纯音乐',instSub:'请放松欣赏',synced:'歌词同步',shareText:'DOMOBOX 迷你专辑「도 아니면 모」',desc:'DOMOBOX首张迷你专辑「도 아니면 모」— 边看歌词边听全部7首歌曲，并可免费下载。'}};
 const KEY='domobox-locale';
 const norm=v=>{if(!v)return null;v=String(v).toLowerCase().replace('_','-');
   if(/^(ko|kr|kor)\b/.test(v))return 'ko';if(/^(en|eng)\b/.test(v))return 'en';if(/^(ja|jp|jpn)\b/.test(v))return 'ja';if(/^(zh|cn|tw|hk|chs|cht)\b/.test(v))return 'zh';return null};
@@ -191,7 +204,7 @@ if(!lang){try{lang=norm(localStorage.getItem(KEY));if(lang)src='saved'}catch(e){
 if(!lang){for(const l of (navigator.languages||[navigator.language||''])){lang=norm(l);if(lang){src='browser';break}}}
 if(!lang){lang='ko';src='default'}
 if(src==='query'||src==='referrer'){try{localStorage.setItem(KEY,lang)}catch(e){}}
-const D=S[lang];
+let D=S[lang];
 const t=(k,v)=>{let s=(D[k]??S.ko[k]??k);if(v)for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s};
 window.I18N={lang,src,t,S};
 document.documentElement.lang=lang==='zh'?'zh-CN':lang;
@@ -204,6 +217,30 @@ const apply=()=>{
   document.title='DOMOBOX Music';
 };
 window.I18N.apply=apply;
+const SVG=(b)=>'<svg class="lang-flag" viewBox="0 0 36 24" aria-hidden="true">'+b+'</svg>';
+const STAR='0,-3.2 0.95,0 4.2,0 1.55,1.85 2.5,5.05 0,3.2 -2.5,5.05 -1.55,1.85 -4.2,0 -0.95,0';
+const tri=(rows)=>rows.map((r,i)=>{const y=[-1.7,-0.48,0.75][i];return r?'<rect x="-3.15" y="'+y+'" width="6.3" height="0.95"/>':'<rect x="-3.15" y="'+y+'" width="2.7" height="0.95"/><rect x="0.45" y="'+y+'" width="2.7" height="0.95"/>'}).join('');
+const FLAGS={
+ko:SVG('<rect width="36" height="24" fill="#fff"/><g transform="translate(18 12) rotate(-56.31)"><circle r="6" fill="#CD2E3A"/><path fill="#0047A0" d="M0-6A3 3 0 0 0 0 0a3 3 0 0 1 0 6A6 6 0 0 1 0-6Z"/><g fill="#111"><g transform="translate(0 -9.35)">'+tri([1,1,1])+'</g><g transform="translate(0 9.35)">'+tri([0,0,0])+'</g></g></g><g fill="#111" transform="translate(18 12) rotate(56.31)"><g transform="translate(0 -9.35)">'+tri([0,1,0])+'</g><g transform="translate(0 9.35)">'+tri([1,0,1])+'</g></g>'),
+en:SVG('<rect width="36" height="24" fill="#b22234"/>'+[1.85,5.54,9.23,12.92,16.62,20.31].map(y=>'<rect y="'+y+'" width="36" height="1.85" fill="#fff"/>').join('')+'<rect width="14.4" height="12.92" fill="#3c3b6e"/>'),
+ja:SVG('<rect width="36" height="24" fill="#fff"/><circle cx="18" cy="12" r="7" fill="#bc002d"/>'),
+zh:SVG('<rect width="36" height="24" fill="#de2910"/><g fill="#ffde00"><polygon points="7.2,3.4 8.3,6.8 12,6.8 9.05,8.9 10.15,12.3 7.2,10.15 4.25,12.3 5.35,8.9 2.4,6.8 6.1,6.8"/>'+[[13.2,3.3,18],[15.6,6.2,36],[15.6,9.6,18],[13.2,12.4,0]].map(a=>'<polygon transform="translate('+a[0]+' '+a[1]+') rotate('+a[2]+') scale(0.34)" points="'+STAR+'"/>').join('')+'</g>')};
+const LABEL={ko:'한국어',en:'English',ja:'日本語',zh:'中文'},ORDER=['ko','en','ja','zh'];
+const sw=document.getElementById('langSwitch'),btn=document.getElementById('langBtn'),menu=document.getElementById('langMenu');
+const close=()=>{sw.classList.remove('is-open');btn.setAttribute('aria-expanded','false');menu.hidden=true};
+const render=()=>{document.getElementById('langCurFlag').innerHTML=FLAGS[lang];btn.title=LABEL[lang];
+  menu.innerHTML=ORDER.filter(l=>l!==lang).map(l=>'<li role="none"><button type="button" class="lang-option" role="option" data-lang="'+l+'" aria-label="'+LABEL[l]+'" title="'+LABEL[l]+'">'+FLAGS[l]+'</button></li>').join('')};
+const setLang=l=>{l=norm(l);if(!l)return;lang=l;D=S[l];window.I18N.lang=l;
+  document.documentElement.lang=l==='zh'?'zh-CN':l;
+  try{localStorage.setItem(KEY,l)}catch(e){}
+  try{const u=new URL(location.href);u.searchParams.set('lang',l);history.replaceState(history.state,'',u.pathname+u.search+u.hash)}catch(e){}
+  render();apply();if(typeof window.I18N.onChange==='function')window.I18N.onChange(l)};
+window.I18N.setLang=setLang;
+render();
+btn.addEventListener('click',e=>{e.stopPropagation();const o=!sw.classList.contains('is-open');sw.classList.toggle('is-open',o);btn.setAttribute('aria-expanded',String(o));menu.hidden=!o;if(o){const f=menu.querySelector('button');f&&f.focus({preventScroll:true})}});
+menu.addEventListener('click',e=>{const b=e.target.closest('[data-lang]');if(!b)return;e.stopPropagation();close();setLang(b.dataset.lang);btn.focus({preventScroll:true})});
+document.addEventListener('pointerdown',e=>{if(!sw.contains(e.target))close()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&sw.classList.contains('is-open')){close();btn.focus()}});
 })();
 </script>
 <script>
@@ -232,7 +269,7 @@ function build(){
 function setArt(i){const n=String(i+1).padStart(2,'0'),b='assets/img/tracks/'+n;const ci=document.getElementById('coverImg');if(ci&&!ci.src.endsWith(b+'.webp')){ci.style.opacity=0;const im=new Image();im.onload=im.onerror=()=>{ci.src=b+'.webp';ci.alt=T('trackCover',{t:(D&&D.tracks[i]?D.tracks[i].title:'')});ci.style.opacity=1};im.src=b+'.webp'}const mi=document.getElementById('miniImg');if(mi)mi.src=b+'-512.jpg';document.documentElement.style.setProperty('--art','url('+b+'-600.webp)');return b}
 function load(i,play){
   idx=(i+D.tracks.length)%D.tracks.length; const t=D.tracks[idx];
-  A.src=t.src; $('#nowTitle').textContent=`${t.no}. ${t.title}`; $('#miniT').textContent=t.title; $('#lyrTitle').textContent=t.title;
+  A.src=t.src; delete $('#nowTitle').dataset.i18n; delete $('#lyrTitle').dataset.i18n; $('#nowTitle').textContent=`${t.no}. ${t.title}`; $('#miniT').textContent=t.title; $('#lyrTitle').textContent=t.title;
   $('#dur').textContent=fmt(t.duration);
   document.querySelectorAll('#list li').forEach((li,j)=>li.classList.toggle('cur',j===idx));
   renderLyrics(t);
@@ -285,6 +322,15 @@ bar.addEventListener('keydown',e=>{if(e.key==='ArrowRight')A.currentTime+=5;if(e
 document.addEventListener('keydown',e=>{if(e.code==='Space'&&!/INPUT|TEXTAREA|BUTTON/.test(e.target.tagName)){e.preventDefault();toggle()}});
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('act',x===b));$('#p-lyr').style.display=b.dataset.tab==='lyr'?'block':'none';$('#p-trk').style.display=b.dataset.tab==='trk'?'block':'none'});
 $('#share').onclick=async()=>{const data={title:'DOMOBOX Music',text:T('shareText'),url:location.href};try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(location.href);$('#share').lastChild.textContent=T('copied')}}catch(e){}};
+window.I18N.onChange=()=>{
+  if(D){let tot=0;D.tracks.forEach(t=>tot+=t.duration);$('#total').textContent=T('total',{n:D.tracks.length,m:Math.round(tot/60)});
+    document.querySelectorAll('#list li').forEach((li,i)=>{const t=D.tracks[i];if(!t)return;const s=li.querySelector('.t>span');if(s)s.textContent=t.instrumental?T('inst'):'DOMOBOX';const a=li.querySelector('a.dl');if(a){a.setAttribute('aria-label',T('dlOf',{t:t.title}));a.title=T('dl')}});
+    if(idx>=0){const t=D.tracks[idx];const ci=$('#coverImg');if(ci&&/tracks\//.test(ci.src))ci.alt=T('trackCover',{t:t.title});
+      if(t.instrumental){const inst=$('#lyrics .inst');if(inst)inst.innerHTML='<div class="eq"><i></i><i></i><i></i><i></i><i></i></div>'+T('instMsg')+'<br><span style="font-weight:500;font-size:14px">'+T('instSub')+'</span>'}
+      else $('#syncInfo').textContent=t.lines.some(l=>typeof l.t==='number')?T('synced'):''}}
+  const rb=$('#repeat');rb.title=[T('rOff'),T('rAll'),T('rOne')][repeat];rb.setAttribute('aria-label',rb.title);
+  const on=!A.paused;$('#play').setAttribute('aria-label',on?T('pause'):T('play'));$('#play').title=on?T('pause'):T('play');
+};
 if('mediaSession' in navigator){const m=navigator.mediaSession;m.setActionHandler('play',()=>A.play());m.setActionHandler('pause',()=>A.pause());m.setActionHandler('previoustrack',()=>$('#prev').click());m.setActionHandler('nexttrack',()=>$('#next').click());try{m.setActionHandler('seekto',e=>A.currentTime=e.seekTime)}catch(e){}}
 })();
 </script>
