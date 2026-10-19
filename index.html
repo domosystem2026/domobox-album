@@ -3,19 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>도 아니면 모 · DOMOBOX 미니앨범</title>
-<meta name="description" content="DOMOBOX 첫 미니앨범 「도 아니면 모」 — 7곡을 가사와 함께 감상하고 내려받으세요.">
+<title>DOMOBOX Music</title>
+<meta name="application-name" content="DOMOBOX Music">
+<meta name="apple-mobile-web-app-title" content="DOMOBOX Music">
+<meta name="description" id="metaDesc" content="DOMOBOX 첫 미니앨범 「도 아니면 모」 — 7곡을 가사와 함께 감상하고 내려받으세요.">
 <meta name="theme-color" content="#F5E3D0">
 <meta property="og:type" content="music.album">
-<meta property="og:title" content="도 아니면 모 · DOMOBOX 미니앨범">
+<meta property="og:title" content="DOMOBOX Music">
+<meta property="og:site_name" content="DOMOBOX Music">
 <meta property="og:description" content="도모들과 함께하는 7곡. 가사 보며 듣고, 무료로 내려받으세요.">
 <meta property="og:image" content="https://domosystem2026.github.io/domobox-album/assets/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://domosystem2026.github.io/domobox-album/">
 <meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="ja_JP">
+<meta property="og:locale:alternate" content="zh_CN">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="도 아니면 모 · DOMOBOX 미니앨범">
+<meta name="twitter:title" content="DOMOBOX Music">
 <meta name="twitter:image" content="https://domosystem2026.github.io/domobox-album/assets/img/og.jpg">
 <link rel="icon" href="assets/img/favicon.png">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -122,72 +128,108 @@ footer{text-align:center;color:var(--choco2);font-size:12px;margin-top:26px;line
     <section class="left">
       <div class="stage" id="stage">
         <div class="disc" aria-hidden="true"></div>
-        <div class="cover"><img id="coverImg" src="assets/img/cover.webp" alt="도 아니면 모 앨범 커버" onerror="this.onerror=null;this.src=this.src.replace('.webp','.jpg')"></div>
+        <div class="cover"><img id="coverImg" src="assets/img/cover.webp" alt="도 아니면 모 앨범 커버" data-i18n-alt="coverAlt" onerror="this.onerror=null;this.src=this.src.replace('.webp','.jpg')"></div>
       </div>
       <div class="meta">
         <h1 class="album" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">도 아니면 모</h1>
-        <p class="sub">DOMOBOX · 미니앨범 · 2026 · 7곡</p>
+        <p class="sub" data-i18n="sub">DOMOBOX · 미니앨범 · 2026 · 7곡</p>
       </div>
-      <div class="now" id="nowTitle">재생할 곡을 골라 주세요</div>
+      <div class="now" id="nowTitle" data-i18n="pick">재생할 곡을 골라 주세요</div>
       <div class="card controls">
-        <div class="bar" id="bar" role="slider" aria-label="재생 위치" tabindex="0"><div class="rail"><div class="fill" id="fill"></div></div><div class="knob" id="knob"></div></div>
+        <div class="bar" id="bar" role="slider" aria-label="재생 위치" data-i18n-aria="seek" tabindex="0"><div class="rail"><div class="fill" id="fill"></div></div><div class="knob" id="knob"></div></div>
         <div class="times"><span id="cur">0:00</span><span id="dur">0:00</span></div>
         <div class="btns">
-          <button class="small" id="shuffle" aria-label="랜덤 재생"><svg viewBox="0 0 24 24"><path d="M10.6 9.2 5.4 4 4 5.4l5.2 5.2zM14.5 4l2 2L4 18.6 5.4 20 18 7.5l2 2V4zm.3 9.4-1.4 1.4 3.1 3.2-2 2H20v-5.5l-2 2z"/></svg></button>
-          <button id="prev" aria-label="이전 곡"><svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg></button>
-          <button class="play" id="play" aria-label="재생"><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg></button>
-          <button id="next" aria-label="다음 곡"><svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6zm10-12h2v12h-2z"/></svg></button>
-          <button class="small" id="repeat" aria-label="반복"><svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2z"/></svg></button>
+          <button class="small" id="shuffle" aria-label="랜덤 재생" data-i18n-aria="shuffle" data-i18n-title="shuffle"><svg viewBox="0 0 24 24"><path d="M10.6 9.2 5.4 4 4 5.4l5.2 5.2zM14.5 4l2 2L4 18.6 5.4 20 18 7.5l2 2V4zm.3 9.4-1.4 1.4 3.1 3.2-2 2H20v-5.5l-2 2z"/></svg></button>
+          <button id="prev" aria-label="이전 곡" data-i18n-aria="prev" data-i18n-title="prev"><svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg></button>
+          <button class="play" id="play" aria-label="재생" data-i18n-aria="play" data-i18n-title="play"><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg></button>
+          <button id="next" aria-label="다음 곡" data-i18n-aria="next" data-i18n-title="next"><svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6zm10-12h2v12h-2z"/></svg></button>
+          <button class="small" id="repeat" aria-label="반복" data-i18n-aria="repeat"><svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2z"/></svg></button>
         </div>
         <div class="dlall">
-          <a class="btn" href="assets/DOMOBOX_DoOrMo_Album.zip" download="DOMOBOX_도아니면모_앨범.zip"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5zm7-3 6-6h-4V3h-4v8H6z"/></svg>앨범 전체 받기 (ZIP)</a>
-          <button class="btn ghost" id="share"><svg viewBox="0 0 24 24"><path d="M18 16a3 3 0 0 0-2.4 1.2l-6.7-3.4a3 3 0 0 0 0-1.6l6.7-3.4A3 3 0 1 0 15 7l-6.7 3.4a3 3 0 1 0 0 3.2L15 17a3 3 0 1 0 3-1z"/></svg>공유</button>
+          <a class="btn" href="assets/DOMOBOX_DoOrMo_Album.zip" download="DOMOBOX_도아니면모_앨범.zip"><svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5zm7-3 6-6h-4V3h-4v8H6z"/></svg><span data-i18n="zip">앨범 전체 받기 (ZIP)</span></a>
+          <button class="btn ghost" id="share"><svg viewBox="0 0 24 24"><path d="M18 16a3 3 0 0 0-2.4 1.2l-6.7-3.4a3 3 0 0 0 0-1.6l6.7-3.4A3 3 0 1 0 15 7l-6.7 3.4a3 3 0 1 0 0 3.2L15 17a3 3 0 1 0 3-1z"/></svg><span data-i18n="share">공유</span></button>
         </div>
       </div>
     </section>
     <section class="right">
       <div class="tabs card" role="tablist">
-        <button class="act" data-tab="lyr" role="tab">가사</button>
-        <button data-tab="trk" role="tab">수록곡</button>
+        <button class="act" data-tab="lyr" role="tab" data-i18n="lyrics">가사</button>
+        <button data-tab="trk" role="tab" data-i18n="tracks">수록곡</button>
       </div>
       <div class="panel card" id="p-lyr">
-        <h3><span id="lyrTitle">가사</span><small id="syncInfo"></small></h3>
+        <h3><span id="lyrTitle" data-i18n="lyrics">가사</span><small id="syncInfo"></small></h3>
         <div class="lyrics" id="lyrics"></div>
       </div>
       <div class="panel card" id="p-trk" style="display:none;margin-top:18px">
-        <h3><span>수록곡</span><small id="total"></small></h3>
+        <h3><span data-i18n="tracks">수록곡</span><small id="total"></small></h3>
         <ol class="list" id="list"></ol>
       </div>
-      <footer>© 2026 DOMOBOX · DRINK &amp; TINY SURPRISE<br>매장에서 만나요, 도모들과 함께!</footer>
+      <footer>© 2026 DOMOBOX · DRINK &amp; TINY SURPRISE<br><span data-i18n="footer">매장에서 만나요, 도모들과 함께!</span></footer>
     </section>
   </div>
 </div>
-<div class="mini card" id="mini"><img id="miniImg" src="assets/img/cover-512.jpg" alt=""><div class="mt"><b id="miniT"></b><span class="mline" id="miniL">DOMOBOX</span></div><button id="miniPlay" aria-label="재생/일시정지"><svg viewBox="0 0 24 24" id="miniIcon"><path d="M8 5v14l11-7z"/></svg></button></div>
+<div class="mini card" id="mini"><img id="miniImg" src="assets/img/cover-512.jpg" alt=""><div class="mt"><b id="miniT"></b><span class="mline" id="miniL">DOMOBOX</span></div><button id="miniPlay" aria-label="재생/일시정지" data-i18n-aria="playPause"><svg viewBox="0 0 24 24" id="miniIcon"><path d="M8 5v14l11-7z"/></svg></button></div>
 <audio id="audio" preload="metadata"></audio>
 <script>
+/* DOMOBOX Music — UI language (ko/en/ja/zh). Lyrics, track titles & covers stay Korean. */
 (()=>{
-const $=s=>document.querySelector(s), A=$('#audio');
+const S={
+ko:{sub:'DOMOBOX · 미니앨범 · 2026 · 7곡',pick:'재생할 곡을 골라 주세요',seek:'재생 위치',shuffle:'랜덤 재생',prev:'이전 곡',next:'다음 곡',play:'재생',pause:'일시정지',playPause:'재생/일시정지',repeat:'반복',rOff:'반복 끔',rAll:'전체 반복',rOne:'한 곡 반복',zip:'앨범 전체 받기 (ZIP)',share:'공유',copied:'링크 복사됨',lyrics:'가사',tracks:'수록곡',footer:'매장에서 만나요, 도모들과 함께!',inst:'연주곡',dl:'내려받기',dlOf:'{t} 내려받기',total:'{n}곡 · {m}분',coverAlt:'도 아니면 모 앨범 커버',trackCover:'{t} 커버',lyrErr:'가사 정보를 불러오지 못했습니다.',instMsg:'연주곡입니다',instSub:'편안하게 감상해 주세요',synced:'가사 싱크',shareText:'DOMOBOX 미니앨범 「도 아니면 모」',desc:'DOMOBOX 첫 미니앨범 「도 아니면 모」 — 7곡을 가사와 함께 감상하고 내려받으세요.'},
+en:{sub:'DOMOBOX · Mini Album · 2026 · 7 Tracks',pick:'Choose a track to play',seek:'Playback position',shuffle:'Shuffle',prev:'Previous track',next:'Next track',play:'Play',pause:'Pause',playPause:'Play/Pause',repeat:'Repeat',rOff:'Repeat off',rAll:'Repeat all',rOne:'Repeat one',zip:'Download Full Album (ZIP)',share:'Share',copied:'Link copied',lyrics:'Lyrics',tracks:'Tracklist',footer:'Come meet the Domos at our store!',inst:'Instrumental',dl:'Download',dlOf:'Download {t}',total:'{n} tracks · {m} min',coverAlt:'도 아니면 모 album cover',trackCover:'{t} cover art',lyrErr:'Couldn’t load the lyrics.',instMsg:'This is an instrumental track',instSub:'Sit back and enjoy',synced:'Synced lyrics',shareText:'DOMOBOX mini album 「도 아니면 모」',desc:'DOMOBOX’s first mini album 「도 아니면 모」 — listen to all 7 tracks with lyrics and download them for free.'},
+ja:{sub:'DOMOBOX · ミニアルバム · 2026 · 全7曲',pick:'再生する曲を選んでください',seek:'再生位置',shuffle:'シャッフル再生',prev:'前の曲',next:'次の曲',play:'再生',pause:'一時停止',playPause:'再生/一時停止',repeat:'リピート',rOff:'リピートオフ',rAll:'全曲リピート',rOne:'1曲リピート',zip:'アルバムを一括ダウンロード (ZIP)',share:'シェア',copied:'リンクをコピーしました',lyrics:'歌詞',tracks:'収録曲',footer:'ドモたちと一緒に、お店で待ってるね！',inst:'インスト',dl:'ダウンロード',dlOf:'{t}をダウンロード',total:'全{n}曲 · {m}分',coverAlt:'도 아니면 모 アルバムジャケット',trackCover:'{t} ジャケット',lyrErr:'歌詞を読み込めませんでした。',instMsg:'インストゥルメンタル曲です',instSub:'ゆったりとお楽しみください',synced:'歌詞同期',shareText:'DOMOBOX ミニアルバム「도 아니면 모」',desc:'DOMOBOXの1stミニアルバム「도 아니면 모」— 全7曲を歌詞と一緒に聴いて、ダウンロードできます。'},
+zh:{sub:'DOMOBOX · 迷你专辑 · 2026 · 共7首',pick:'请选择要播放的歌曲',seek:'播放进度',shuffle:'随机播放',prev:'上一首',next:'下一首',play:'播放',pause:'暂停',playPause:'播放/暂停',repeat:'循环播放',rOff:'关闭循环',rAll:'全部循环',rOne:'单曲循环',zip:'下载整张专辑 (ZIP)',share:'分享',copied:'链接已复制',lyrics:'歌词',tracks:'曲目',footer:'和DOMO们一起，在店里等你！',inst:'纯音乐',dl:'下载',dlOf:'下载 {t}',total:'共{n}首 · {m}分钟',coverAlt:'도 아니면 모 专辑封面',trackCover:'{t} 封面',lyrErr:'歌词加载失败。',instMsg:'这是一首纯音乐',instSub:'请放松欣赏',synced:'歌词同步',shareText:'DOMOBOX 迷你专辑「도 아니면 모」',desc:'DOMOBOX首张迷你专辑「도 아니면 모」— 边看歌词边听全部7首歌曲，并可免费下载。'}};
+const KEY='domobox-locale';
+const norm=v=>{if(!v)return null;v=String(v).toLowerCase().replace('_','-');
+  if(/^(ko|kr|kor)\b/.test(v))return 'ko';if(/^(en|eng)\b/.test(v))return 'en';if(/^(ja|jp|jpn)\b/.test(v))return 'ja';if(/^(zh|cn|tw|hk|chs|cht)\b/.test(v))return 'zh';return null};
+const fromRef=()=>{try{if(!document.referrer)return null;const u=new URL(document.referrer);if(!/(^|\.)domobox\.co\.kr$/i.test(u.hostname))return null;
+  const q=norm(u.searchParams.get('lang')||u.searchParams.get('locale')||u.searchParams.get('hl'));if(q)return q;
+  const seg=u.pathname.split('/').filter(Boolean)[0];return norm(seg)||'ko'}catch(e){return null}};
+let lang=null,src='';
+try{const q=new URLSearchParams(location.search);const v=q.get('lang')||q.get('locale')||q.get('hl');lang=norm(v);if(lang)src='query'}catch(e){}
+if(!lang){lang=fromRef();if(lang)src='referrer'}
+if(!lang){try{lang=norm(localStorage.getItem(KEY));if(lang)src='saved'}catch(e){}}
+if(!lang){for(const l of (navigator.languages||[navigator.language||''])){lang=norm(l);if(lang){src='browser';break}}}
+if(!lang){lang='ko';src='default'}
+if(src==='query'||src==='referrer'){try{localStorage.setItem(KEY,lang)}catch(e){}}
+const D=S[lang];
+const t=(k,v)=>{let s=(D[k]??S.ko[k]??k);if(v)for(const x in v)s=s.split('{'+x+'}').join(v[x]);return s};
+window.I18N={lang,src,t,S};
+document.documentElement.lang=lang==='zh'?'zh-CN':lang;
+const apply=()=>{
+  document.querySelectorAll('[data-i18n]').forEach(e=>e.textContent=t(e.dataset.i18n));
+  document.querySelectorAll('[data-i18n-aria]').forEach(e=>e.setAttribute('aria-label',t(e.dataset.i18nAria)));
+  document.querySelectorAll('[data-i18n-title]').forEach(e=>e.title=t(e.dataset.i18nTitle));
+  document.querySelectorAll('[data-i18n-alt]').forEach(e=>e.alt=t(e.dataset.i18nAlt));
+  const md=document.getElementById('metaDesc');if(md)md.content=t('desc');
+  document.title='DOMOBOX Music';
+};
+window.I18N.apply=apply;
+})();
+</script>
+<script>
+(()=>{
+const $=s=>document.querySelector(s), A=$('#audio'), T=window.I18N.t;window.I18N.apply();
 const P='M8 5v14l11-7z', Q='M6 5h4v14H6zm8 0h4v14h-4z';
 let fakeT=null,D=null, idx=-1, lines=[], cur=-1, shuffle=false, repeat=1, userScroll=0;
 const fmt=t=>{t=Math.max(0,t|0);return (t/60|0)+':'+String(t%60).padStart(2,'0')};
 const dlIcon='<svg viewBox="0 0 24 24"><path d="M5 20h14v-2H5zm7-3 6-6h-4V3h-4v8H6z"/></svg>';
-fetch('assets/lyrics.json').then(r=>r.json()).then(d=>{D=d;window.__ALBUM=d;build();const m=location.hash.match(/demo=(\d+),(\d+)/);if(m){load(+m[1]-1,false);A.addEventListener('loadedmetadata',()=>{A.currentTime=+m[2];A.play().catch(()=>{});},{once:true});if(/still/.test(location.hash)){setPlaying(true);fakeT=+m[2];sync();$('#mini').classList.add('show')}}else autoStart();}).catch(e=>{$('#lyrics').innerHTML='<div class="note">가사 정보를 불러오지 못했습니다.</div>';console.error(e)});
+fetch('assets/lyrics.json').then(r=>r.json()).then(d=>{D=d;window.__ALBUM=d;build();const m=location.hash.match(/demo=(\d+),(\d+)/);if(m){load(+m[1]-1,false);A.addEventListener('loadedmetadata',()=>{A.currentTime=+m[2];A.play().catch(()=>{});},{once:true});if(/still/.test(location.hash)){setPlaying(true);fakeT=+m[2];sync();$('#mini').classList.add('show')}}else autoStart();}).catch(e=>{$('#lyrics').innerHTML='<div class="note">'+T('lyrErr')+'</div>';console.error(e)});
 function autoStart(){
   load(0,true);
   const kick=()=>{setTimeout(()=>{if(A.paused&&!document.body.dataset.started)A.play().catch(()=>{});},0);['pointerup','keydown','touchend'].forEach(ev=>document.removeEventListener(ev,kick))};
   A.play().then(()=>{}).catch(()=>{['pointerup','keydown','touchend'].forEach(ev=>document.addEventListener(ev,kick))});
 }
-(()=>{const b=document.getElementById('repeat');if(b){b.classList.add('on');b.title='전체 반복'}})();
+(()=>{const b=document.getElementById('repeat');if(b){b.classList.add('on');b.title=T('rAll')}})();
 function build(){
   const ol=$('#list'); let tot=0;
   D.tracks.forEach((t,i)=>{tot+=t.duration;
     const li=document.createElement('li');
-    li.innerHTML=`<span class="no">${t.no}</span><span class="t"><b>${t.title}</b><span>${t.instrumental?'연주곡':'DOMOBOX'}</span></span><span class="d">${fmt(t.duration)}</span><a class="dl" href="${t.src}" download="${t.download}" aria-label="${t.title} 내려받기" title="내려받기">${dlIcon}</a>`;
+    li.innerHTML=`<span class="no">${t.no}</span><span class="t"><b>${t.title}</b><span>${t.instrumental?T('inst'):'DOMOBOX'}</span></span><span class="d">${fmt(t.duration)}</span><a class="dl" href="${t.src}" download="${t.download}" aria-label="${T('dlOf',{t:t.title})}" title="${T('dl')}">${dlIcon}</a>`;
     li.onclick=e=>{if(e.target.closest('a'))return;load(i,true)};
     ol.appendChild(li)});
-  $('#total').textContent=`7곡 · ${Math.round(tot/60)}분`;
+  $('#total').textContent=T('total',{n:D.tracks.length,m:Math.round(tot/60)});
 }
-function setArt(i){const n=String(i+1).padStart(2,'0'),b='assets/img/tracks/'+n;const ci=document.getElementById('coverImg');if(ci&&!ci.src.endsWith(b+'.webp')){ci.style.opacity=0;const im=new Image();im.onload=im.onerror=()=>{ci.src=b+'.webp';ci.alt=(D&&D.tracks[i]?D.tracks[i].title:'')+' 커버';ci.style.opacity=1};im.src=b+'.webp'}const mi=document.getElementById('miniImg');if(mi)mi.src=b+'-512.jpg';document.documentElement.style.setProperty('--art','url('+b+'-600.webp)');return b}
+function setArt(i){const n=String(i+1).padStart(2,'0'),b='assets/img/tracks/'+n;const ci=document.getElementById('coverImg');if(ci&&!ci.src.endsWith(b+'.webp')){ci.style.opacity=0;const im=new Image();im.onload=im.onerror=()=>{ci.src=b+'.webp';ci.alt=T('trackCover',{t:(D&&D.tracks[i]?D.tracks[i].title:'')});ci.style.opacity=1};im.src=b+'.webp'}const mi=document.getElementById('miniImg');if(mi)mi.src=b+'-512.jpg';document.documentElement.style.setProperty('--art','url('+b+'-600.webp)');return b}
 function load(i,play){
   idx=(i+D.tracks.length)%D.tracks.length; const t=D.tracks[idx];
   A.src=t.src; $('#nowTitle').textContent=`${t.no}. ${t.title}`; $('#miniT').textContent=t.title; $('#lyrTitle').textContent=t.title;
@@ -200,9 +242,9 @@ function load(i,play){
 A.addEventListener('play',()=>{document.body.dataset.started=1;setArt(idx)});
 function renderLyrics(t){
   const box=$('#lyrics'); box.innerHTML=''; lines=[]; cur=-1; box.classList.remove('static'); box.scrollTop=0;
-  if(t.instrumental){box.innerHTML='<div class="inst"><div class="eq"><i></i><i></i><i></i><i></i><i></i></div>연주곡입니다<br><span style="font-weight:500;font-size:14px">편안하게 감상해 주세요</span></div>';$('#syncInfo').textContent='';return}
+  if(t.instrumental){box.innerHTML='<div class="inst"><div class="eq"><i></i><i></i><i></i><i></i><i></i></div>'+T('instMsg')+'<br><span style="font-weight:500;font-size:14px">'+T('instSub')+'</span></div>';$('#syncInfo').textContent='';return}
   const synced=t.lines.some(l=>typeof l.t==='number');
-  $('#syncInfo').textContent=synced?'가사 싱크':'';
+  $('#syncInfo').textContent=synced?T('synced'):'';
   if(!synced) box.classList.add('static');
   let noted=false;
   t.lines.forEach(l=>{
@@ -226,7 +268,7 @@ function sync(){
 }
 A.addEventListener('timeupdate',sync);
 A.addEventListener('loadedmetadata',()=>{$('#dur').textContent=fmt(A.duration)});
-const setPlaying=on=>{$('#app').classList.toggle('playing',on);$('#stage').classList.toggle('playing',on);$('#playIcon').innerHTML=`<path d="${on?Q:P}"/>`;$('#miniIcon').innerHTML=`<path d="${on?Q:P}"/>`;$('#play').setAttribute('aria-label',on?'일시정지':'재생')};
+const setPlaying=on=>{$('#app').classList.toggle('playing',on);$('#stage').classList.toggle('playing',on);$('#playIcon').innerHTML=`<path d="${on?Q:P}"/>`;$('#miniIcon').innerHTML=`<path d="${on?Q:P}"/>`;$('#play').setAttribute('aria-label',on?T('pause'):T('play'));$('#play').title=on?T('pause'):T('play')};
 A.addEventListener('play',()=>{setPlaying(true);$('#mini').classList.add('show');(function raf(){if(!A.paused){sync();requestAnimationFrame(raf)}})()});
 A.addEventListener('pause',()=>setPlaying(false));
 A.addEventListener('ended',()=>{if(repeat===2){A.currentTime=0;A.play();return} if(shuffle){let n;do{n=Math.random()*7|0}while(n===idx);load(n,true);return} if(idx<D.tracks.length-1||repeat===1)load(idx+1,true);else{setPlaying(false)}});
@@ -235,14 +277,14 @@ $('#play').onclick=toggle; $('#miniPlay').onclick=toggle;
 $('#next').onclick=()=>load(idx+1,true);
 $('#prev').onclick=()=>{if(A.currentTime>3)A.currentTime=0;else load(idx-1,true)};
 $('#shuffle').onclick=e=>{shuffle=!shuffle;e.currentTarget.classList.toggle('on',shuffle)};
-$('#repeat').onclick=e=>{repeat=(repeat+1)%3;const b=e.currentTarget;b.classList.toggle('on',repeat>0);b.title=['반복 끔','전체 반복','한 곡 반복'][repeat];b.style.position='relative';b.dataset.one=repeat===2?'1':'';b.innerHTML=b.innerHTML.replace(/<b.*<\/b>/,'')+(repeat===2?'<b style="position:absolute;font-size:9px;top:6px;right:4px">1</b>':'')};
+$('#repeat').onclick=e=>{repeat=(repeat+1)%3;const b=e.currentTarget;b.classList.toggle('on',repeat>0);b.title=[T('rOff'),T('rAll'),T('rOne')][repeat];b.setAttribute('aria-label',b.title);b.style.position='relative';b.dataset.one=repeat===2?'1':'';b.innerHTML=b.innerHTML.replace(/<b.*<\/b>/,'')+(repeat===2?'<b style="position:absolute;font-size:9px;top:6px;right:4px">1</b>':'')};
 const bar=$('#bar'); const seek=e=>{const r=bar.getBoundingClientRect();const x=((e.touches?e.touches[0].clientX:e.clientX)-r.left)/r.width;const d=A.duration||D.tracks[idx].duration;A.currentTime=Math.min(Math.max(x,0),1)*d;sync()};
 let drag=false; bar.addEventListener('pointerdown',e=>{drag=true;bar.setPointerCapture(e.pointerId);seek(e)}); bar.addEventListener('pointermove',e=>{if(drag)seek(e)}); bar.addEventListener('pointerup',()=>drag=false);
 bar.addEventListener('keydown',e=>{if(e.key==='ArrowRight')A.currentTime+=5;if(e.key==='ArrowLeft')A.currentTime-=5});
 ['wheel','touchmove'].forEach(ev=>$('#lyrics').addEventListener(ev,()=>userScroll=Date.now(),{passive:true}));
 document.addEventListener('keydown',e=>{if(e.code==='Space'&&!/INPUT|TEXTAREA|BUTTON/.test(e.target.tagName)){e.preventDefault();toggle()}});
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('act',x===b));$('#p-lyr').style.display=b.dataset.tab==='lyr'?'block':'none';$('#p-trk').style.display=b.dataset.tab==='trk'?'block':'none'});
-$('#share').onclick=async()=>{const data={title:'도 아니면 모 · DOMOBOX',text:'DOMOBOX 미니앨범 「도 아니면 모」',url:location.href};try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(location.href);$('#share').lastChild.textContent='링크 복사됨'}}catch(e){}};
+$('#share').onclick=async()=>{const data={title:'DOMOBOX Music',text:T('shareText'),url:location.href};try{if(navigator.share)await navigator.share(data);else{await navigator.clipboard.writeText(location.href);$('#share').lastChild.textContent=T('copied')}}catch(e){}};
 if('mediaSession' in navigator){const m=navigator.mediaSession;m.setActionHandler('play',()=>A.play());m.setActionHandler('pause',()=>A.pause());m.setActionHandler('previoustrack',()=>$('#prev').click());m.setActionHandler('nexttrack',()=>$('#next').click());try{m.setActionHandler('seekto',e=>A.currentTime=e.seekTime)}catch(e){}}
 })();
 </script>
