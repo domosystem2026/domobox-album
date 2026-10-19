@@ -38,7 +38,8 @@ body{min-height:100vh;overflow-x:hidden}
 header{display:flex;justify-content:center;padding:6px 0 14px}
 header img{height:30px;width:auto}
 header{position:relative}
-.lang-switch{position:absolute;right:0;top:50%;transform:translateY(-50%);z-index:20}
+.lang-switch{position:absolute;right:0;top:calc(6px + 30px * 96.5 / 227);transform:translateY(-50%);z-index:20}
+/* centre = DOMOBOX wordmark line of logo.webp (letters span rows 46–147 of 227) */
 .lang-switch-btn{min-width:2.2rem;min-height:2.75rem;color:var(--choco2);cursor:pointer;background:none;border:0;display:inline-flex;align-items:center;justify-content:center;gap:.3rem;padding:.2rem .15rem;font-family:inherit}
 .lang-switch-btn:hover,.lang-switch-btn:focus-visible{color:var(--choco)}
 .lang-flag{display:block;flex-shrink:0;width:1.28rem;height:.85rem;border-radius:1.5px;overflow:hidden;box-shadow:0 0 0 1px rgba(74,44,29,.22)}
