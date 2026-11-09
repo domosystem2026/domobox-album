@@ -6,12 +6,12 @@
 <title>DOMOBOX Music</title>
 <meta name="application-name" content="DOMOBOX Music">
 <meta name="apple-mobile-web-app-title" content="DOMOBOX Music">
-<meta name="description" id="metaDesc" content="DOMOBOX 첫 미니앨범 「도 아니면 모」 — 7곡을 가사와 함께 감상하고 내려받으세요.">
+<meta name="description" id="metaDesc" content="DOMOBOX 첫 미니앨범 「도 아니면 모」 — 8곡을 가사와 함께 감상하고 내려받으세요.">
 <meta name="theme-color" content="#F5E3D0">
 <meta property="og:type" content="music.album">
 <meta property="og:title" content="DOMOBOX Music">
 <meta property="og:site_name" content="DOMOBOX Music">
-<meta property="og:description" content="도모들과 함께하는 7곡. 가사 보며 듣고, 무료로 내려받으세요.">
+<meta property="og:description" content="도모들과 함께하는 8곡. 가사 보며 듣고, 무료로 내려받으세요.">
 <meta property="og:image" content="https://domosystem2026.github.io/domobox-album/assets/img/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -146,7 +146,7 @@ footer{text-align:center;color:var(--choco2);font-size:12px;margin-top:26px;line
       </div>
       <div class="meta">
         <h1 class="album" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">도 아니면 모</h1>
-        <p class="sub" data-i18n="sub">DOMOBOX · 미니앨범 · 2026 · 7곡</p>
+        <p class="sub" data-i18n="sub">DOMOBOX · 미니앨범 · 2026 · 8곡</p>
       </div>
       <div class="now" id="nowTitle" data-i18n="pick">재생할 곡을 골라 주세요</div>
       <div class="card controls">
@@ -188,10 +188,10 @@ footer{text-align:center;color:var(--choco2);font-size:12px;margin-top:26px;line
 /* DOMOBOX Music — UI language (ko/en/ja/zh). Lyrics, track titles & covers stay Korean. */
 (()=>{
 const S={
-ko:{langTo:'언어 선택',sub:'DOMOBOX · 미니앨범 · 2026 · 7곡',pick:'재생할 곡을 골라 주세요',seek:'재생 위치',shuffle:'랜덤 재생',prev:'이전 곡',next:'다음 곡',play:'재생',pause:'일시정지',playPause:'재생/일시정지',repeat:'반복',rOff:'반복 끔',rAll:'전체 반복',rOne:'한 곡 반복',zip:'앨범 전체 받기 (ZIP)',share:'공유',copied:'링크 복사됨',lyrics:'가사',tracks:'수록곡',footer:'매장에서 만나요, 도모들과 함께!',inst:'연주곡',dl:'내려받기',dlOf:'{t} 내려받기',total:'{n}곡 · {m}분',coverAlt:'도 아니면 모 앨범 커버',trackCover:'{t} 커버',lyrErr:'가사 정보를 불러오지 못했습니다.',instMsg:'연주곡입니다',instSub:'편안하게 감상해 주세요',synced:'가사 싱크',shareText:'DOMOBOX 미니앨범 「도 아니면 모」',desc:'DOMOBOX 첫 미니앨범 「도 아니면 모」 — 7곡을 가사와 함께 감상하고 내려받으세요.'},
-en:{langTo:'Select language',sub:'DOMOBOX · Mini Album · 2026 · 7 Tracks',pick:'Choose a track to play',seek:'Playback position',shuffle:'Shuffle',prev:'Previous track',next:'Next track',play:'Play',pause:'Pause',playPause:'Play/Pause',repeat:'Repeat',rOff:'Repeat off',rAll:'Repeat all',rOne:'Repeat one',zip:'Download Full Album (ZIP)',share:'Share',copied:'Link copied',lyrics:'Lyrics',tracks:'Tracklist',footer:'Come meet the Domos at our store!',inst:'Instrumental',dl:'Download',dlOf:'Download {t}',total:'{n} tracks · {m} min',coverAlt:'도 아니면 모 album cover',trackCover:'{t} cover art',lyrErr:'Couldn’t load the lyrics.',instMsg:'This is an instrumental track',instSub:'Sit back and enjoy',synced:'Synced lyrics',shareText:'DOMOBOX mini album 「도 아니면 모」',desc:'DOMOBOX’s first mini album 「도 아니면 모」 — listen to all 7 tracks with lyrics and download them for free.'},
-ja:{langTo:'言語を選ぶ',sub:'DOMOBOX · ミニアルバム · 2026 · 全7曲',pick:'再生する曲を選んでください',seek:'再生位置',shuffle:'シャッフル再生',prev:'前の曲',next:'次の曲',play:'再生',pause:'一時停止',playPause:'再生/一時停止',repeat:'リピート',rOff:'リピートオフ',rAll:'全曲リピート',rOne:'1曲リピート',zip:'アルバムを一括ダウンロード (ZIP)',share:'シェア',copied:'リンクをコピーしました',lyrics:'歌詞',tracks:'収録曲',footer:'ドモたちと一緒に、お店で待ってるね！',inst:'インスト',dl:'ダウンロード',dlOf:'{t}をダウンロード',total:'全{n}曲 · {m}分',coverAlt:'도 아니면 모 アルバムジャケット',trackCover:'{t} ジャケット',lyrErr:'歌詞を読み込めませんでした。',instMsg:'インストゥルメンタル曲です',instSub:'ゆったりとお楽しみください',synced:'歌詞同期',shareText:'DOMOBOX ミニアルバム「도 아니면 모」',desc:'DOMOBOXの1stミニアルバム「도 아니면 모」— 全7曲を歌詞と一緒に聴いて、ダウンロードできます。'},
-zh:{langTo:'选择语言',sub:'DOMOBOX · 迷你专辑 · 2026 · 共7首',pick:'请选择要播放的歌曲',seek:'播放进度',shuffle:'随机播放',prev:'上一首',next:'下一首',play:'播放',pause:'暂停',playPause:'播放/暂停',repeat:'循环播放',rOff:'关闭循环',rAll:'全部循环',rOne:'单曲循环',zip:'下载整张专辑 (ZIP)',share:'分享',copied:'链接已复制',lyrics:'歌词',tracks:'曲目',footer:'和DOMO们一起，在店里等你！',inst:'纯音乐',dl:'下载',dlOf:'下载 {t}',total:'共{n}首 · {m}分钟',coverAlt:'도 아니면 모 专辑封面',trackCover:'{t} 封面',lyrErr:'歌词加载失败。',instMsg:'这是一首纯音乐',instSub:'请放松欣赏',synced:'歌词同步',shareText:'DOMOBOX 迷你专辑「도 아니면 모」',desc:'DOMOBOX首张迷你专辑「도 아니면 모」— 边看歌词边听全部7首歌曲，并可免费下载。'}};
+ko:{langTo:'언어 선택',sub:'DOMOBOX · 미니앨범 · 2026 · 8곡',pick:'재생할 곡을 골라 주세요',seek:'재생 위치',shuffle:'랜덤 재생',prev:'이전 곡',next:'다음 곡',play:'재생',pause:'일시정지',playPause:'재생/일시정지',repeat:'반복',rOff:'반복 끔',rAll:'전체 반복',rOne:'한 곡 반복',zip:'앨범 전체 받기 (ZIP)',share:'공유',copied:'링크 복사됨',lyrics:'가사',tracks:'수록곡',footer:'매장에서 만나요, 도모들과 함께!',inst:'연주곡',dl:'내려받기',dlOf:'{t} 내려받기',total:'{n}곡 · {m}분',coverAlt:'도 아니면 모 앨범 커버',trackCover:'{t} 커버',lyrErr:'가사 정보를 불러오지 못했습니다.',instMsg:'연주곡입니다',instSub:'편안하게 감상해 주세요',synced:'가사 싱크',shareText:'DOMOBOX 미니앨범 「도 아니면 모」',desc:'DOMOBOX 첫 미니앨범 「도 아니면 모」 — 8곡을 가사와 함께 감상하고 내려받으세요.'},
+en:{langTo:'Select language',sub:'DOMOBOX · Mini Album · 2026 · 8 Tracks',pick:'Choose a track to play',seek:'Playback position',shuffle:'Shuffle',prev:'Previous track',next:'Next track',play:'Play',pause:'Pause',playPause:'Play/Pause',repeat:'Repeat',rOff:'Repeat off',rAll:'Repeat all',rOne:'Repeat one',zip:'Download Full Album (ZIP)',share:'Share',copied:'Link copied',lyrics:'Lyrics',tracks:'Tracklist',footer:'Come meet the Domos at our store!',inst:'Instrumental',dl:'Download',dlOf:'Download {t}',total:'{n} tracks · {m} min',coverAlt:'도 아니면 모 album cover',trackCover:'{t} cover art',lyrErr:'Couldn’t load the lyrics.',instMsg:'This is an instrumental track',instSub:'Sit back and enjoy',synced:'Synced lyrics',shareText:'DOMOBOX mini album 「도 아니면 모」',desc:'DOMOBOX’s first mini album 「도 아니면 모」 — listen to all 8 tracks with lyrics and download them for free.'},
+ja:{langTo:'言語を選ぶ',sub:'DOMOBOX · ミニアルバム · 2026 · 全8曲',pick:'再生する曲を選んでください',seek:'再生位置',shuffle:'シャッフル再生',prev:'前の曲',next:'次の曲',play:'再生',pause:'一時停止',playPause:'再生/一時停止',repeat:'リピート',rOff:'リピートオフ',rAll:'全曲リピート',rOne:'1曲リピート',zip:'アルバムを一括ダウンロード (ZIP)',share:'シェア',copied:'リンクをコピーしました',lyrics:'歌詞',tracks:'収録曲',footer:'ドモたちと一緒に、お店で待ってるね！',inst:'インスト',dl:'ダウンロード',dlOf:'{t}をダウンロード',total:'全{n}曲 · {m}分',coverAlt:'도 아니면 모 アルバムジャケット',trackCover:'{t} ジャケット',lyrErr:'歌詞を読み込めませんでした。',instMsg:'インストゥルメンタル曲です',instSub:'ゆったりとお楽しみください',synced:'歌詞同期',shareText:'DOMOBOX ミニアルバム「도 아니면 모」',desc:'DOMOBOXの1stミニアルバム「도 아니면 모」— 全8曲を歌詞と一緒に聴いて、ダウンロードできます。'},
+zh:{langTo:'选择语言',sub:'DOMOBOX · 迷你专辑 · 2026 · 共8首',pick:'请选择要播放的歌曲',seek:'播放进度',shuffle:'随机播放',prev:'上一首',next:'下一首',play:'播放',pause:'暂停',playPause:'播放/暂停',repeat:'循环播放',rOff:'关闭循环',rAll:'全部循环',rOne:'单曲循环',zip:'下载整张专辑 (ZIP)',share:'分享',copied:'链接已复制',lyrics:'歌词',tracks:'曲目',footer:'和DOMO们一起，在店里等你！',inst:'纯音乐',dl:'下载',dlOf:'下载 {t}',total:'共{n}首 · {m}分钟',coverAlt:'도 아니면 모 专辑封面',trackCover:'{t} 封面',lyrErr:'歌词加载失败。',instMsg:'这是一首纯音乐',instSub:'请放松欣赏',synced:'歌词同步',shareText:'DOMOBOX 迷你专辑「도 아니면 모」',desc:'DOMOBOX首张迷你专辑「도 아니면 모」— 边看歌词边听全部8首歌曲，并可免费下载。'}};
 const KEY='domobox-locale';
 const norm=v=>{if(!v)return null;v=String(v).toLowerCase().replace('_','-');
   if(/^(ko|kr|kor)\b/.test(v))return 'ko';if(/^(en|eng)\b/.test(v))return 'en';if(/^(ja|jp|jpn)\b/.test(v))return 'ja';if(/^(zh|cn|tw|hk|chs|cht)\b/.test(v))return 'zh';return null};
@@ -309,7 +309,7 @@ A.addEventListener('loadedmetadata',()=>{$('#dur').textContent=fmt(A.duration)})
 const setPlaying=on=>{$('#app').classList.toggle('playing',on);$('#stage').classList.toggle('playing',on);$('#playIcon').innerHTML=`<path d="${on?Q:P}"/>`;$('#miniIcon').innerHTML=`<path d="${on?Q:P}"/>`;$('#play').setAttribute('aria-label',on?T('pause'):T('play'));$('#play').title=on?T('pause'):T('play')};
 A.addEventListener('play',()=>{setPlaying(true);$('#mini').classList.add('show');(function raf(){if(!A.paused){sync();requestAnimationFrame(raf)}})()});
 A.addEventListener('pause',()=>setPlaying(false));
-A.addEventListener('ended',()=>{if(repeat===2){A.currentTime=0;A.play();return} if(shuffle){let n;do{n=Math.random()*7|0}while(n===idx);load(n,true);return} if(idx<D.tracks.length-1||repeat===1)load(idx+1,true);else{setPlaying(false)}});
+A.addEventListener('ended',()=>{if(repeat===2){A.currentTime=0;A.play();return} if(shuffle){let n;do{n=Math.random()*D.tracks.length|0}while(n===idx);load(n,true);return} if(idx<D.tracks.length-1||repeat===1)load(idx+1,true);else{setPlaying(false)}});
 const toggle=()=>{if(!D)return; A.paused?A.play():A.pause()};
 $('#play').onclick=toggle; $('#miniPlay').onclick=toggle;
 $('#next').onclick=()=>load(idx+1,true);

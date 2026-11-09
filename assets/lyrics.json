@@ -812,11 +812,100 @@
   },
   {
    "no": 4,
+   "title": "도 아니면 모지",
+   "duration": 94.1,
+   "src": "assets/audio/04.mp3",
+   "download": "04 도 아니면 모지.mp3",
+   "lrc": "assets/lrc/04.lrc",
+   "instrumental": false,
+   "syncQuality": "approx",
+   "lines": [
+    {
+     "section": "Intro"
+    },
+    {
+     "text": "도, 개, 걸, 윷, 모",
+     "t": 10.9,
+     "approx": true
+    },
+    {
+     "break": true
+    },
+    {
+     "section": "Verse 1"
+    },
+    {
+     "text": "스트레스를",
+     "t": 26.72,
+     "approx": true
+    },
+    {
+     "text": "윷과 함께 날려버리자",
+     "t": 28.12,
+     "approx": true
+    },
+    {
+     "text": "오늘의 행운을 윷으로 잡아보자",
+     "t": 32.08,
+     "approx": true
+    },
+    {
+     "text": "인생 뭐 있어",
+     "t": 34.78,
+     "approx": true
+    },
+    {
+     "text": "도 아니면 모지",
+     "t": 36.68,
+     "approx": true
+    },
+    {
+     "break": true
+    },
+    {
+     "section": "Chorus"
+    },
+    {
+     "text": "스트레스를",
+     "t": 51.76,
+     "approx": true
+    },
+    {
+     "text": "윷과 함께 날려버리자",
+     "t": 53.16,
+     "approx": true
+    },
+    {
+     "break": true
+    },
+    {
+     "section": "Verse 2"
+    },
+    {
+     "text": "윷놀이 하세",
+     "t": 60.84,
+     "approx": true
+    },
+    {
+     "break": true
+    },
+    {
+     "section": "Verse 3"
+    },
+    {
+     "text": "도모박스",
+     "t": 74.42,
+     "approx": true
+    }
+   ]
+  },
+  {
+   "no": 5,
    "title": "윷놀이 합시다",
    "duration": 186.02,
-   "src": "assets/audio/04.mp3",
-   "download": "04 윷놀이 합시다.mp3",
-   "lrc": "assets/lrc/04.lrc",
+   "src": "assets/audio/05.mp3",
+   "download": "05 윷놀이 합시다.mp3",
+   "lrc": "assets/lrc/05.lrc",
    "instrumental": false,
    "syncQuality": "good",
    "lines": [
@@ -1085,12 +1174,12 @@
    ]
   },
   {
-   "no": 5,
+   "no": 6,
    "title": "도모랑 놀자",
    "duration": 52.8,
-   "src": "assets/audio/05.mp3",
-   "download": "05 도모랑 놀자.mp3",
-   "lrc": "assets/lrc/05.lrc",
+   "src": "assets/audio/06.mp3",
+   "download": "06 도모랑 놀자.mp3",
+   "lrc": "assets/lrc/06.lrc",
    "instrumental": false,
    "syncQuality": "good",
    "lines": [
@@ -1176,12 +1265,12 @@
    ]
   },
   {
-   "no": 6,
+   "no": 7,
    "title": "도 개 걸 윷 모",
    "duration": 144.84,
-   "src": "assets/audio/06.mp3",
-   "download": "06 도 개 걸 윷 모.mp3",
-   "lrc": "assets/lrc/06.lrc",
+   "src": "assets/audio/07.mp3",
+   "download": "07 도 개 걸 윷 모.mp3",
+   "lrc": "assets/lrc/07.lrc",
    "instrumental": false,
    "syncQuality": "good",
    "lines": [
@@ -1348,12 +1437,12 @@
    ]
   },
   {
-   "no": 7,
+   "no": 8,
    "title": "편안한 시간",
    "duration": 239.23,
-   "src": "assets/audio/07.mp3",
-   "download": "07 편안한 시간.mp3",
-   "lrc": "assets/lrc/07.lrc",
+   "src": "assets/audio/08.mp3",
+   "download": "08 편안한 시간.mp3",
+   "lrc": "assets/lrc/08.lrc",
    "instrumental": true,
    "syncQuality": null,
    "lines": []
